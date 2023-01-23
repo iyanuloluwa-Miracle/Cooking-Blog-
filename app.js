@@ -4,7 +4,7 @@ const expressLayouts = require('express-ejs-layouts')
 
 
 const app = express()
-const port= process.env.PORT || 4001 
+const port= process.env.PORT || 3008 
 
 
 require('dotenv').config()
