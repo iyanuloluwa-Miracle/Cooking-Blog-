@@ -1,13 +1,16 @@
-const express = require('express')
+const express = require("express");
 
-const router = express.Router()
+const router = express.Router();
 
-const recipeController = require('../controllers/recipeController')
+const recipeController = require("../controllers/recipeController");
 
-router.get('/', recipeController.homepage )
-router.get('/recipe/:id', recipeController.exploreRecipe )
-router.get('/categories', recipeController.exploreCategories )
-router.get('/categories/:id', recipeController.exploreCategoriesById )
+router.get("/", recipeController.homepage);
+router.get("/recipe/:id", recipeController.exploreRecipe);
+router.get("/categories", recipeController.exploreCategories);
+router.get("/categories/:id", recipeController.exploreCategoriesById);
+router.post("/search", recipeController.searchRecipe);
+router.get("/explore-latest", recipeController.exploreLatest);
+router.get("/explore-random ", recipeController.exploreLatest);
 
 
-module.exports = router
+module.exports = router;

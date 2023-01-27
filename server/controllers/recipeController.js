@@ -51,6 +51,37 @@ exports.exploreCategories = async(req, res) =>{
 
 
 
+//Get /categories/id
+//Categories
+
+
+exports.exploreCategoriesById = async(req, res) =>{
+    try{
+     let categoryId = req.params.id   
+     const limitNumber = 20;
+     const categoryById = await Recipe.find({'category': categoryId}).limit(limitNumber)
+     res.render('categories', { title: 'Cooking Blog - Categories', categoryById});
+
+    }catch(error){
+        res.status(500).send({message: error.message || "Error Occured"})
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Get /recipe/:id
 //Recipe
 
@@ -69,22 +100,64 @@ exports.exploreRecipe = async(req, res) =>{
 }
 
 
-//Get /recipe/:id
-//Recipe
+//Post/searchRecipe
 
-
-exports.exploreRecipe = async(req, res) =>{
+exports.searchRecipe = async(req, res) =>{
     try{
      
-      let recipeId = req.params.id;
-      const recipe = await Recipe.findById(recipeId)
-     res.render('recipe', { title: 'Cooking Blog - Recipe',recipe});
+        let searchTerm = req.body.searchTerm;
+        let recipe = await Recipe.find({ $text:{ $search: searchTerm, $diacriticSensitive: true } })
+        res.render('search', { title: 'Cooking Blog - Search', recipe});
+  
+      }catch(error){
+        res.status(500).send({message: error.message || "Error Occured"})
+    }    
+}
 
+
+
+
+
+
+//Get Explore-latest
+
+
+
+exports.exploreLatest = async(req, res) =>{
+    try{
+     
+     const limitNumber = 9
+     const recipe = await Recipe.find({}).sort({ _id: -1}).limit(limitNumber)
+     res.render('explore-latest', { title: 'Cooking Blog - Explore Latest',recipe});
     }catch(error){
         res.status(500).send({message: error.message || "Error Occured"})
     }
    
 }
+
+
+
+
+
+//Get Explore-Random
+
+
+exports.exploreRandom = async(req, res) =>{
+    try{
+     
+     let count = await Recipe.find().countDocuments()
+     let random = Math.floor(Math.random()* count)
+     let recipe = await Recipe.findOne().skip(random).exec()
+     
+     res.render('explore-latest', { title: 'Cooking Blog - Explore Latest',recipe});
+    }catch(error){
+        res.status(500).send({message: error.message || "Error Occured"})
+    }
+   
+}
+
+
+
 
 
 

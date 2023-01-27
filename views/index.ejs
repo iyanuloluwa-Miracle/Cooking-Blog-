@@ -15,7 +15,7 @@
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
-            <a href="/random-recipe" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show random</a>
+            <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show random</a>
 
 
         </div>
@@ -180,7 +180,7 @@
 
 
         <% if(typeof food.chinese !== 'undefined' && food.chinese.length > 0) { %>
-            <% food.thai.forEach(function(recipe, index) { %>
+            <% food.chinese.forEach(function(recipe, index) { %>
 
                 <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
                     <div class="category_img category_img--large shadow">
