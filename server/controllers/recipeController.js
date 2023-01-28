@@ -38,7 +38,7 @@ exports.homepage = async(req, res) =>{
 
 exports.exploreCategories = async(req, res) =>{
     try{
-     const limitNumber = 20;
+     const limitNumber = 5;
      const categories = await Category.find({}).limit(limitNumber)
      res.render('categories', { title: 'Cooking Blog - Categories', categories});
 
@@ -58,7 +58,7 @@ exports.exploreCategories = async(req, res) =>{
 exports.exploreCategoriesById = async(req, res) =>{
     try{
      let categoryId = req.params.id   
-     const limitNumber = 20;
+     const limitNumber = 4;
      const categoryById = await Recipe.find({'category': categoryId}).limit(limitNumber)
      res.render('categories', { title: 'Cooking Blog - Categories', categoryById});
 
@@ -148,13 +148,47 @@ exports.exploreRandom = async(req, res) =>{
      let count = await Recipe.find().countDocuments()
      let random = Math.floor(Math.random()* count)
      let recipe = await Recipe.findOne().skip(random).exec()
-     
-     res.render('explore-latest', { title: 'Cooking Blog - Explore Latest',recipe});
+     res.render('explore-random', { title: 'Cooking Blog - Explore Random',recipe });
     }catch(error){
         res.status(500).send({message: error.message || "Error Occured"})
     }
    
 }
+
+
+
+
+//Get submit Random
+
+
+exports.submitRecipe = async(req, res) =>{
+    res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe' })
+
+}
+
+
+
+
+//post data submit Random
+
+submitRecipeonPost
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
