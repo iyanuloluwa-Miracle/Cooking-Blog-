@@ -216,7 +216,28 @@ exports.submitRecipeOnPost = async(req, res) => {
     }
   }
   
-  
+  // Delete Recipe
+// async function deleteRecipe(){
+//   try {
+//     await Recipe.deleteMany({ name: "Tom Daley's sweet & sour chicken" });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// deleteRecipe();
+
+
+//Update Recipe
+// async function updateRecipe(){
+//   try {
+//     const res = await Recipe.updateOne({ image: 'Veggie pad Thai.jpg' }, { image: 'image15.jpg' });
+//     res.n; // Number of documents matched
+//     res.nModified; // Number of documents modified
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// updateRecipe();
 
 
 
