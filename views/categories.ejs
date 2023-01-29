@@ -2,7 +2,7 @@
 
 <style>
     .container img{
-        width: 100%;
+        width: 0%;
     }
 
 </style>
@@ -34,32 +34,20 @@
 
 
 <!--- Explore Categories and bug to fix he-->
-<div class="container">
-    <div class="row">
-        <% if(typeof categoryById !== 'undefined' && categoryById.length > 0) { %>
-            <% categoryById.forEach(function(recipe, index) { %>
-                <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
-    
-    
-    
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/uploads/<%= recipe.image %>"  alt="<%= recipe.name %>" loading="lazy">
-                            </div>
-                            <div class="card-header">
-                                <div class="pt-1"><%= recipe.name %></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-    
-                </a>
-            <% }) %>
-        <% }%>
-            
 
-    </div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof categoryById !== 'undefined' && categoryById.length > 0) { %>
+        <%  categoryById.forEach(function(recipe, index){  %>
+            <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                <div class="category_img shadow">
+                    <img src="/uploads/<%= recipe.image %>"  alt="<%= recipe.name %>" loading="lazy">
     
-             
+                </div>
+                <div class="pt-1"><%- recipe.name %></div>
+            </a>
+        <% }) %>
+    <%} %>
+
 </div>
+
