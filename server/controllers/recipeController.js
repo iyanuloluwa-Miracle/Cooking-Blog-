@@ -219,7 +219,7 @@ exports.submitRecipeOnPost = async(req, res) => {
   // Delete Recipe
 // async function deleteRecipe(){
 //   try {
-//     await Recipe.deleteMany({ name: "Tom Daley's sweet & sour chicken" });
+//     await Recipe.deleteOne({ name: "Veggie pad Thai" });
 //   } catch (error) {
 //     console.log(error);
 //   }
