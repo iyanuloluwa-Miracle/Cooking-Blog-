@@ -126,7 +126,7 @@ exports.searchRecipe = async(req, res) =>{
 exports.exploreLatest = async(req, res) =>{
     try{
      
-     const limitNumber = 9
+     const limitNumber = 6
      const recipe = await Recipe.find({}).sort({ _id: -1}).limit(limitNumber)
      res.render('explore-latest', { title: 'Cooking Blog - Explore Latest',recipe});
     }catch(error){
@@ -217,14 +217,17 @@ exports.submitRecipeOnPost = async(req, res) => {
   }
   
   // Delete Recipe
-async function deleteRecipe(){
-  try {
-    await Recipe.deleteOne({ name: "Semovita" });
-  } catch (error) {
-    console.log(error);
-  }
-}
-deleteRecipe();
+// async function deleteRecipe(){
+//   try {
+//     await Recipe.deleteOne({ name: "Semovita" });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// deleteRecipe();
+
+
+
 
 
 //Update Recipe
@@ -241,9 +244,19 @@ deleteRecipe();
 
 
 
+// Contact us section
+
+exports.contactPage = async(req, res) =>{
+  res.render('contact', { title: 'Cooking Blog - Contact-Page'});
+ 
+}
 
 
-
+//
+exports.aboutPage = async(req, res) =>{
+  res.render('about', { title: 'Cooking Blog - About-Page'});
+ 
+}
 
 
 
